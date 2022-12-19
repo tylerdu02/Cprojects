@@ -7,7 +7,7 @@
 using namespace std;
 
 void print(Room* toPrint, vector<Item*> inventory);
-void goNextRoom(Room* currentRoom);
+Room* moveRoom(Room* currentRoom);
 void addItem(Room* currentRoom, vector<Item*> inventory);
 void dropItem(char* item, Room* currentRoom, vector<Item*> inventory);
 void printInventory(vector<Item*> inventory);
@@ -74,7 +74,7 @@ int main() {
 
   strncpy(roomName, "Tilted Towers", 79);
   strncpy(roomDescription, "The kings of all places");
-  Room* tilted towers = new Room(roomName, roomDescription);
+  Room* tiltedtowers = new Room(roomName, roomDescription);
 
   strncpy(roomName, "Shifty Shafts", 79);
   strncpy(roomDescription, "A quite confusing place");
@@ -82,10 +82,62 @@ int main() {
 
   strncpy(roomName, "Flush Factory", 79);
   strncpy(roomDescription, "Nothings but toilets here");
-  Room* tomatotown = new Room(roomName, roomDescription);
+  Room* flushfactory = new Room(roomName, roomDescription);
 
   strncpy(roomName, "Greasy Grove", 79);
   strncpy(roomDescription, "Has nothing to do with grease");
-  Room* tomatotown = new Room(roomName, roomDescription);
+  Room* greasygrove = new Room(roomName, roomDescription);
 
- 
+  strncpy(itemName, "Slide", 19);
+  Item* slide = new Item(itemName);
+  strncpy(itemName, "Tomato", 19);
+  Item* tomato = new Item(itemName);
+  strncpy(itemName, "Toilet", 19);
+  Item* toilet = new Item(itemName);
+  strncpy(itemName, "SCAR", 19);
+  Item* scar = new Item(itemName);
+  strncpy(itemName, "Treasure Chest", 19);
+  Item* treasurechest = new Item(itemName);
+
+  pleasantpark->addItem(slide);
+  tomatotown->addItem(tomato);
+  flushfactory->addItem(toilet);
+  tiltedtowers->addItem(scar);
+  lootlake->addItem(treasurechest);
+
+  anarchyacres->addNeighbor(east, riskyreels);
+  anarchyacres->addNeighbor(west, pleasantpark);
+  riskyreels->addNeighbor(west, anarchyacres);
+  riskyreels->addNeighbor(south, tomatotown);
+  tomatotown->addNeighbor(north, riskyreels);
+  tomatotown->addNeighbor(south, retailrow);
+  retailrow->addNeighbor(north, tomatotown);
+  retailrow->addNeighbor(west, dustydivot);
+  dustydivot->addNeighbor(east, retailrow);
+  dustydivot->addNeighbor(south, saltysprings);
+  dustydivot->addNeighbor(west, tiltedtowers);
+  saltysprings->addNeighbor(north, dustydivot);
+  saltysprings->addNeighbor(south, fatalfields);
+  saltysprings->addNeighbor(west, shiftyshafts);
+  fatalfields->addNeighbor(north, saltysprings);
+  fatalfields->addNeighbor(west, flushfactory);
+  fatalfields->addNeighbor(south, luckylanding);
+  luckylanding->addNeighbor(north, fatalfields);
+  junkjunction->addNeighbor(south, pleasantpark);
+  pleasantpark->addNeighbor(north, junkjunction);
+  pleasantpark->addNeighbor(east, anarchyacres);
+  pleasantpark->addNeighbor(south, lootlake);
+  lootlake->addNeighbor(north, pleasantpark);
+  lootlake->addNeighbor(south, tiltedtowers);
+  tiltedtowers->addNeighbor(north, lootlake);
+  tiltedtowers->addNeighbor(east, dustydivot);
+  tiltedtowers->addNeighbor(south, shiftyshafts);
+  shiftyshafts->addNeighbor(north, tiltedtowers);
+  shiftyshafts->addNeighbor(south, flushfactory);
+  shiftyshafts->addNeighbor(east, saltysprings);
+  shiftyshafts->addNeighbor(west, greasygrove);
+  flushfactory->addNeighbor(north, shiftyshafts)
+  flushfactory->addNeighbor(east, fatalfields);
+  greasygrove->addNeighbor(east, shiftyshafts);
+
+  
