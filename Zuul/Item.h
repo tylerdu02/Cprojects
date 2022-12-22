@@ -1,6 +1,10 @@
 #pragma once
-#include <iostream>
-#include <vector>
+class Item{
 
-using namespace std;
+ public:
+  Item(char*);
+  char* getLabel();
+ private:
+  char* label;
 
+};

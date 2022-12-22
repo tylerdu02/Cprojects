@@ -1,5 +1,11 @@
-#include <iostream>
 #include <cstring>
 #include "Item.h"
 
-using namespace std;
+Item::Item(char* newLabel){
+  label = new char[20];
+  strcpy(label,newLabel);
+}
+
+char* Item::getLabel(){
+  return label;
+}
